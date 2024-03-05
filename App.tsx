@@ -1,5 +1,12 @@
+import { Provider } from "react-redux";
+
 import MainScreen from "./screens/MainScreen";
+import store from "./redux/store/store";
 
 export default function App() {
-  return <MainScreen />;
+  return (
+    <Provider store={store}>
+      <MainScreen />
+    </Provider>
+  );
 }

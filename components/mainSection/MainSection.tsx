@@ -1,12 +1,7 @@
-import { View, Text, StyleSheet } from "react-native";
-import Breadcrumb from "../breadcrumb/Breadcrumb";
+import { View, StyleSheet } from "react-native";
 
 function MainSection() {
-  return (
-    <View style={styles.container}>
-      <Breadcrumb />
-    </View>
-  );
+  return <View style={styles.container}></View>;
 }
 
 export default MainSection;
@@ -16,5 +11,6 @@ const styles = StyleSheet.create({
     marginTop: 20,
     paddingLeft: 10,
     paddingRight: 10,
+    flex: 1,
   },
 });
