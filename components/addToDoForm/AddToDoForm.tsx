@@ -24,9 +24,7 @@ function AddToDoForm() {
       <View style={styles.input_container}>
         <TextInput
           value={inputValue}
-          onChange={(e: NativeSyntheticEvent<TextInputChangeEventData>) => {
-            handleChange(e);
-          }}
+          onChange={handleChange}
           placeholder="할일을 입력해주세요..."
           style={styles.input}
         />

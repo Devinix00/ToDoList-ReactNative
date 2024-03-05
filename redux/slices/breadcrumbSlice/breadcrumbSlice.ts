@@ -1,12 +1,12 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 interface IBreadcrumbState {
-  items: string[];
+  breadcrumb: string[];
   activeIndex: number;
 }
 
 const initialState: IBreadcrumbState = {
-  items: ["할 일", "아직 안 한일"],
+  breadcrumb: ["해야 할 일", "아직 안 한 일"],
   activeIndex: 0,
 };
 

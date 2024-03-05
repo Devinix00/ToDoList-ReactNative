@@ -6,13 +6,13 @@ import { RootState } from "../../redux/store/store";
 
 function Breadcrumb() {
   const dispatch = useDispatch();
-  const { items, activeIndex } = useSelector(
+  const { breadcrumb, activeIndex } = useSelector(
     (state: RootState) => state.breadcrumb
   );
 
   return (
     <View style={styles.container}>
-      {items.map((item, index) => (
+      {breadcrumb.map((item, index) => (
         <View key={index} style={index === activeIndex ? styles.active : null}>
           <Text
             onPress={() => dispatch(setActiveIndex(index))}
@@ -45,3 +45,6 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
   },
 });
+
+
+

@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-interface IToDo {
+export interface IToDo {
   id: number;
   text: string;
   completed: boolean;
