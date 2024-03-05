@@ -1,20 +1,25 @@
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import useHandleToDo from "../../hooks/useHandleToDo";
 import { IToDo } from "../../redux/slices/toDosSlice/toDosSlice";
+import BouncyCheckbox from "react-native-bouncy-checkbox";
 
 interface IProps {
   toDo: IToDo;
 }
 
 function IndividualList({ toDo }: IProps) {
-  const { text } = toDo;
+  const { text, completed } = toDo;
   const { handleToggleToDo, handleDeleteToDo } = useHandleToDo({ toDo });
 
   return (
     <View style={styles.container}>
       <View style={styles.left_section}>
         <Text>{text}</Text>
-        <TouchableOpacity onPress={handleToggleToDo} style={styles.check_box} />
+        <BouncyCheckbox
+          isChecked={completed}
+          onPress={handleToggleToDo}
+          style={styles.check_box}
+        />
       </View>
 
       <View style={styles.right_section}>
@@ -43,18 +48,15 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
     borderBottomColor: "#d9d9d9",
   },
-  check_box: {
-    width: 20,
-    height: 20,
-    borderWidth: 1,
-    borderColor: "#aaaaaa",
-    alignItems: "center",
-    justifyContent: "center",
-  },
   left_section: {
     display: "flex",
     flexDirection: "row",
     gap: 10,
+  },
+  check_box: {
+    height: 15,
+    alignItems: "center",
+    justifyContent: "center",
   },
   right_section: {
     display: "flex",
