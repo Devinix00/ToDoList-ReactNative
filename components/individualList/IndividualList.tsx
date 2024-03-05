@@ -2,34 +2,51 @@ import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import useHandleToDo from "../../hooks/useHandleToDo";
 import { IToDo } from "../../redux/slices/toDosSlice/toDosSlice";
 import BouncyCheckbox from "react-native-bouncy-checkbox";
+import useIsEditing from "../../hooks/useIsEditing";
+import UpdateToDoForm from "../updateToDoForm/UpdateToDoForm";
 
 interface IProps {
   toDo: IToDo;
 }
 
 function IndividualList({ toDo }: IProps) {
-  const { text, completed } = toDo;
-  const { handleToggleToDo, handleDeleteToDo } = useHandleToDo({ toDo });
+  const { text, completed, id } = toDo;
+  const { handleToggleToDo, handleDeleteToDo } = useHandleToDo();
+  const { isEditing, setIsEditing, handleEdit } = useIsEditing();
 
   return (
     <View style={styles.container}>
-      <View style={styles.left_section}>
-        <Text>{text}</Text>
-        <BouncyCheckbox
-          isChecked={completed}
-          onPress={handleToggleToDo}
-          style={styles.check_box}
-        />
-      </View>
+      {isEditing ? (
+        <UpdateToDoForm id={id} setIsEditing={setIsEditing}/>
+      ) : (
+        <View style={styles.left_section}>
+          <Text>{text}</Text>
+          <BouncyCheckbox
+            isChecked={completed}
+            onPress={() => {
+              handleToggleToDo(id);
+            }}
+            style={styles.check_box}
+          />
+        </View>
+      )}
 
       <View style={styles.right_section}>
-        <TouchableOpacity style={styles.update_button}>
-          <Text style={styles.button_text}>수정</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.delete_button}>
-          <Text onPress={handleDeleteToDo} style={styles.button_text}>
-            삭제
-          </Text>
+        {isEditing ? (
+          <TouchableOpacity onPress={handleEdit} style={styles.update_button}>
+            <Text style={styles.button_text}>닫기</Text>
+          </TouchableOpacity>
+        ) : (
+          <TouchableOpacity onPress={handleEdit} style={styles.update_button}>
+            <Text style={styles.button_text}>수정</Text>
+          </TouchableOpacity>
+        )}
+
+        <TouchableOpacity
+          onPress={() => handleDeleteToDo(id)}
+          style={styles.delete_button}
+        >
+          <Text style={styles.button_text}>삭제</Text>
         </TouchableOpacity>
       </View>
     </View>

@@ -1,12 +1,9 @@
 import {
   KeyboardAvoidingView,
-  NativeSyntheticEvent,
   Pressable,
   StyleSheet,
   Text,
   TextInput,
-  TextInputChangeEventData,
-  TextInputKeyPressEventData,
   View,
 } from "react-native";
 import useInput from "../../hooks/useInput";

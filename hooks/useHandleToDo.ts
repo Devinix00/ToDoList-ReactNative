@@ -1,22 +1,28 @@
 import { useDispatch } from "react-redux";
-import { IToDo, toDosActions } from "../redux/slices/toDosSlice/toDosSlice";
+import { toDosActions } from "../redux/slices/toDosSlice/toDosSlice";
+import { Dispatch, SetStateAction } from "react";
 
-interface IProps {
-  toDo: IToDo;
-}
-
-function useHandleToDo({ toDo }: IProps) {
+function useHandleToDo() {
   const dispatch = useDispatch();
 
-  const handleToggleToDo = () => {
-    dispatch(toDosActions.toggleToDo(toDo.id));
+  const handleToggleToDo = (id: number) => {
+    dispatch(toDosActions.toggleToDo(id));
   };
 
-  const handleDeleteToDo = () => {
-    dispatch(toDosActions.deleteToDo(toDo.id));
+  const handleDeleteToDo = (id: number) => {
+    dispatch(toDosActions.deleteToDo(id));
   };
 
-  return { handleToggleToDo, handleDeleteToDo };
+  const handleUpdateToDo = (
+    id: number,
+    newText: string,
+    setIsEditing: Dispatch<SetStateAction<boolean>>
+  ) => {
+    dispatch(toDosActions.updateToDo({ id, newText }));
+    setIsEditing(false);
+  };
+
+  return { handleToggleToDo, handleDeleteToDo, handleUpdateToDo };
 }
 
 export default useHandleToDo;
