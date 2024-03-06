@@ -8,12 +8,12 @@ React-Native 연습용 To Do List 앱입니다.
 
 
 ## 화면
-<img src="./assets/Simulator Screenshot - iPhone SE (3rd generation) - 2024-03-05 at 19.39.15.png"/>
+<img src="./assets/Simulator Screenshot - iPhone SE (3rd generation) - 2024-03-05 at 19.39.15.png" width="225" height="400" alt="Simulator Screenshot 1"/>
 
+<img src="./assets/Simulator Screenshot - iPhone SE (3rd generation) - 2024-03-05 at 19.39.32.png" width="225" height="400" alt="Simulator Screenshot 2"/>
 
-<img src="./assets/Simulator Screenshot - iPhone SE (3rd generation) - 2024-03-05 at 19.39.32.png"/>
+<img src="./assets/simulator_screenshot_C64B17DF-4CE0-4DAE-B142-390958BD6A51.png" width="225" height="400" alt="Simulator Screenshot 3"/>
 
-<img src="./assets/simulator_screenshot_C64B17DF-4CE0-4DAE-B142-390958BD6A51.png"/>
 
 ## Tech Stack
 1. React-Native
